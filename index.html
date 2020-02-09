@@ -12,10 +12,12 @@
 </head>
 <!-- Style from W3schools -->
 
-<style>/*
+<style>
+    /*
     h1 {
       align=center;
     }*/
+
     #mydiv {
         position: absolute;
         z-index: 9;
@@ -35,9 +37,12 @@
 </style>
 
 <body>
-    <a href="upload.html">
-        <h1 align="center">Upload.</h1>
-    </a>
+
+    <h2 align="center">Upload your background</h2>
+    <label>Image File:</label>
+    <br/>
+    <input type="file" id="imageLoader" name="imageLoader" />
+    <canvas id="imageCanvas" style="border:0px;"></canvas>
     <div id="mydiv">
         <div id="mydivheader">
             <img src="robertfors-vertical.jpg" alt="Image of art">
@@ -93,50 +98,31 @@
             }
         }
     </script>
-<script>
-window.onload = function() {
+    <script>
+        window.onload = function() {
+            var imageLoader = document.getElementById('imageLoader');
+            imageLoader.addEventListener('change', handleImage, false);
+            var canvas = document.getElementById('imageCanvas');
+            var ctx = canvas.getContext('2d');
 
-    var imageLoader = document.getElementById('imageLoader');
-        imageLoader.addEventListener('change', handleImage, false);
-    var canvas = document.getElementById('imageCanvas');
-    var ctx = canvas.getContext('2d');
-
-    function handleImage(e){
-        var reader = new FileReader();
-        reader.onload = function(event){
-            var img = new Image();
-            img.onload = function(){
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img,0,0);
+            function handleImage(e) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var img = new Image();
+                    img.onload = function() {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+                    }
+                    img.src = event.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);
             }
-            img.src = event.target.result;
         }
-        reader.readAsDataURL(e.target.files[0]);
-    }
-}
-</script>
+    </script>
 
-
-
-<!-- Upload background image -->
-  <h2 align="center">Upload your background</h2>
-  <label>Image File:</label><br/>
-  <input type="file" id="imageLoader" name="imageLoader"/>
-  <canvas id="imageCanvas"></canvas>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- Upload background image -->
 
 </body>
+
 </html>
