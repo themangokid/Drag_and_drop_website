@@ -5,7 +5,6 @@ window.onload = function() {
     var canvas = document.getElementById('imageCanvas');
     var ctx = canvas.getContext('2d');
 
-
     function handleImage(e){
         var reader = new FileReader();
         reader.onload = function(event){
@@ -19,4 +18,7 @@ window.onload = function() {
         }
         reader.readAsDataURL(e.target.files[0]);
     }
+
+
+
 }
