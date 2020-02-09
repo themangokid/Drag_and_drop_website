@@ -13,10 +13,17 @@
 <!-- Style from W3schools -->
 
 <style>
-    /*
-    h1 {
-      align=center;
-    }*/
+
+    .centering {
+    max-width: 1000px;
+    margin: auto;
+    }
+
+    body {
+      align:center;
+      background-image: url("default-room.jpg");
+      background-repeat: no-repeat;
+    }
 
     #mydiv {
         position: absolute;
@@ -36,9 +43,9 @@
     }
 </style>
 
-<body>
+<body align="centering">
 
-    <h2 align="center">Upload your background</h2>
+    <h2>Upload your background</h2>
     <label>Image File:</label>
     <br/>
     <input type="file" id="imageLoader" name="imageLoader" />
